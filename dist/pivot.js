@@ -916,6 +916,7 @@
           th = document.createElement("th");
           th.setAttribute("colspan", rowAttrs.length);
           th.setAttribute("rowspan", colAttrs.length);
+          th.className = "pvtAxisBlank";
           tr.appendChild(th);
         }
         th = document.createElement("th");

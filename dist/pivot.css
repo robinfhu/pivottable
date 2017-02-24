@@ -40,6 +40,12 @@ table.pvtTable tbody tr:hover td {
     background-color: rgb(238, 238, 248);
 }
 
+/* This ensures the pivot table's first column is the smallest width possible */
+table.pvtTable > thead .pvtAxisLabel,
+table.pvtTable > thead .pvtAxisBlank {
+    width: 1%;
+}
+
 .pvtTotal, .pvtGrandTotal { font-weight: bold; }
 
 .pvtControl {
