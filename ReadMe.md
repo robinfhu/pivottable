@@ -5,9 +5,16 @@
 
 PivotTable.js is a Javascript Pivot Table library with drag'n'drop functionality built on top of jQuery/jQueryUI and originally written in CoffeeScript by [Nicolas Kruchten](http://nicolas.kruchten.com) at [Datacratic](http://datacratic.com).
 
-It is available under an MIT license from [CDNJS](https://cdnjs.com/libraries/pivottable) and [NPM](https://www.npmjs.com/package/pivottable) and [Bower](http://bower.io/) under the name `pivottable`. And on [Packagist.org](https://packagist.org/packages/nicolaskruchten/pivottable), it is `nicolaskruchten/pivottable`. 
+It is available under an MIT license from [CDNJS](https://cdnjs.com/libraries/pivottable) and [NPM](https://www.npmjs.com/package/pivottable) and [Bower](http://bower.io/) under the name `pivottable`. And on [Packagist.org](https://packagist.org/packages/nicolaskruchten/pivottable), it is `nicolaskruchten/pivottable`.
 
 PivotTable.js can be used with [Python/Jupyter](https://pypi.python.org/pypi/pivottablejs) and [R/RStudio](https://github.com/smartinsightsfromdata/rpivotTable) and you can [try it right now](http://nicolas.kruchten.com/pivottable/examples/local.html) in your browser on a CSV file.
+
+## Updated features in this forked version:
+
+* A new `aggregatorAttrs` option you can pass into pivotUI.
+* Updating `onRefresh` option in pivotUI so that the `this` context is set to the table element.
+* Adding `onBeforeRefresh` callback option.
+* Updating the CSS styling.
 
 ## What does it do?
 
