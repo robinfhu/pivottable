@@ -665,7 +665,7 @@ callWithJQuery ($) ->
             uiTable = $("<table>", "class": "pvtUi").attr("cellpadding", 5)
 
             #renderer control
-            rendererControl = $("<td>")
+            rendererControl = $("<td>").addClass('pvtControl')
 
             renderer = $("<select>")
                 .addClass('pvtRenderer')
@@ -817,7 +817,7 @@ callWithJQuery ($) ->
             for own x of opts.aggregators
                 aggregator.append $("<option>").val(x).html(x)
 
-            $("<td>").addClass('pvtVals')
+            $("<td>").addClass('pvtVals pvtControl')
               .appendTo(tr1)
               .append(aggregator)
               .append($("<br>"))

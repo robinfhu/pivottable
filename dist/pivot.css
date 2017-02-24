@@ -1,42 +1,62 @@
-.pvtUi { color: #333; }
-
-
-table.pvtTable {
-    font-size: 8pt;
-    text-align: left;
+.pvtUi {
+    width: 100%;
     border-collapse: collapse;
 }
+
+.horizontal-scroll {
+    overflow-x: auto;
+}
+
+.pvtUi > tbody > tr > td:first-child {
+    width: 12%;
+}
+
+table.pvtTable {
+    width: 100%;
+    text-align: left;
+    border-collapse: collapse;
+    font-size: 0.7em;
+}
+
 table.pvtTable thead tr th, table.pvtTable tbody tr th {
-    background-color: #e6EEEE;
+    background-color: #f2f2f2;
     border: 1px solid #CDCDCD;
-    font-size: 8pt;
     padding: 5px;
+    font-weight: normal;
 }
 
 table.pvtTable .pvtColLabel {text-align: center;}
-table.pvtTable .pvtTotalLabel {text-align: right;}
+table.pvtTable .pvtTotalLabel {text-align: right; font-weight: bold;}
 
 table.pvtTable tbody tr td {
-    color: #3D3D3D;
     padding: 5px;
     background-color: #FFF;
-    border: 1px solid #CDCDCD;
+    border: 1px solid #ccc;
     vertical-align: top;
     text-align: right;
 }
 
+table.pvtTable tbody tr:hover td {
+    background-color: rgb(238, 238, 248);
+}
+
 .pvtTotal, .pvtGrandTotal { font-weight: bold; }
 
-.pvtVals { text-align: center;}
+.pvtControl {
+    background: #EEE;
+    border-bottom: solid 1px #ccc;
+    border-right: solid 1px #ccc;
+}
+
 .pvtAggregator { margin-bottom: 5px ;}
 
-.pvtAxisContainer, .pvtVals {
-    border: 1px solid gray;
+.pvtAxisContainer {
     background: #EEE;
     padding: 5px;
     min-width: 20px;
     min-height: 20px;
 }
+
 .pvtAxisContainer li {
     padding: 8px 6px;
     list-style-type: none;
@@ -59,6 +79,15 @@ table.pvtTable tbody tr td {
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     border-radius: 5px;
+}
+
+.pvtRows {
+    border-right: solid 1px #ccc;
+}
+
+.pvtCols {
+    border-top: solid 1px #ccc;
+    border-bottom: solid 1px #ccc;
 }
 
 .pvtTriangle {
@@ -100,4 +129,4 @@ table.pvtTable tbody tr td {
 
 .pvtCheckContainer p{ margin: 5px; }
 
-.pvtRendererArea { padding: 5px;}
+.pvtRendererArea { padding: 0;}
