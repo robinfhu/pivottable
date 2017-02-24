@@ -163,6 +163,27 @@ describe "$.pivotUI()", ->
                 "Totals",  "2",    "1",   "1",    "4"
                 ].join("")
 
+    describe 'special callbacks', ->
+        it 'onRefresh', (done)->
+            table = $('<div>').pivotUI fixtureData, {
+                rows: ['gender']
+                cols: ['colour']
+                onRefresh: ->
+                    expect(@find('table.pvtTable').length).toBe 1
+            }
+
+            setTimeout (-> done()), 500
+
+        it 'onBeforeRefresh', (done)->
+            table = $('<div>').pivotUI fixtureData, {
+                rows: ['gender']
+                cols: ['colour']
+                onBeforeRefresh: ->
+                    expect($(@).length).toBe 1
+            }
+
+            setTimeout (-> done()), 500
+
     describe 'pivot attribute dropdown', ->
         taggedData = [
             {GeographyTag: 'United States', SectorTag: 'Financials', Pnl: 123},

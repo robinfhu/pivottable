@@ -861,6 +861,8 @@ callWithJQuery ($) ->
 
             #set up for refreshing
             refreshDelayed = =>
+                opts.onBeforeRefresh.call @, pivotUIOptions if typeof(opts.onBeforeRefresh) is 'function'
+
                 subopts =
                     derivedAttributes: opts.derivedAttributes
                     localeStrings: opts.localeStrings

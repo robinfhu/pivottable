@@ -133,6 +133,34 @@
         return expect(table.find("table.pvtTable").text()).toBe(["age", "12", "34", "null", "Totals", "gender", "female", "1", "1", "male", "1", "1", "null", "1", "1", "2", "Totals", "2", "1", "1", "4"].join(""));
       });
     });
+    describe('special callbacks', function() {
+      it('onRefresh', function(done) {
+        var table;
+        table = $('<div>').pivotUI(fixtureData, {
+          rows: ['gender'],
+          cols: ['colour'],
+          onRefresh: function() {
+            return expect(this.find('table.pvtTable').length).toBe(1);
+          }
+        });
+        return setTimeout((function() {
+          return done();
+        }), 500);
+      });
+      return it('onBeforeRefresh', function(done) {
+        var table;
+        table = $('<div>').pivotUI(fixtureData, {
+          rows: ['gender'],
+          cols: ['colour'],
+          onBeforeRefresh: function() {
+            return expect($(this).length).toBe(1);
+          }
+        });
+        return setTimeout((function() {
+          return done();
+        }), 500);
+      });
+    });
     return describe('pivot attribute dropdown', function() {
       var taggedData;
       taggedData = [

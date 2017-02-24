@@ -1404,6 +1404,9 @@
         refreshDelayed = (function(_this) {
           return function() {
             var exclusions, inclusions, len4, newDropdown, numInputsToProcess, pivotUIOptions, pvtVals, q, ref4, ref5, ref6, s, subopts, unusedAttrsContainer, vals;
+            if (typeof opts.onBeforeRefresh === 'function') {
+              opts.onBeforeRefresh.call(_this, pivotUIOptions);
+            }
             subopts = {
               derivedAttributes: opts.derivedAttributes,
               localeStrings: opts.localeStrings,
