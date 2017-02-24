@@ -163,6 +163,50 @@ describe "$.pivotUI()", ->
                 "Totals",  "2",    "1",   "1",    "4"
                 ].join("")
 
+    describe 'pivot attribute dropdown', ->
+        taggedData = [
+            {GeographyTag: 'United States', SectorTag: 'Financials', Pnl: 123},
+            {GeographyTag: 'United Kingdom', SectorTag: 'Health Care', Pnl: 567},
+            {GeographyTag: 'Emerging Asia', SectorTag: 'Financials', Pnl: 80},
+            {GeographyTag: 'United States', SectorTag: 'Materials', Pnl: 1},
+            {GeographyTag: 'United States', SectorTag: 'Real Estate', Pnl: 85}
+        ]
+
+        it 'renders a dropdown listing attributes', (done)->
+            table = $("<div>").pivotUI taggedData, {
+                rows: ['GeographyTag'],
+                cols: ['SectorTag'],
+                vals: ['Pnl'],
+                aggregatorName: 'Sum'
+            }
+
+            aggDropdown = table.find('.pvtAggregator')
+            expect(aggDropdown.val()).toBe 'Sum'
+
+            setTimeout ->
+                attrDropdown = table.find('.pvtAttrDropdown')
+                expect(attrDropdown.length).toBe 1
+                options = attrDropdown.find('option').map(-> @.value).toArray()
+                expect(options).toEqual ['', 'GeographyTag', 'SectorTag', 'Pnl']
+                done()
+            , 500
+
+        it 'renders a dropdown listing attributes user has specified', (done)->
+            table = $("<div>").pivotUI taggedData, {
+                rows: ['GeographyTag'],
+                cols: ['SectorTag'],
+                vals: ['Pnl'],
+                aggregatorName: 'Sum'
+                aggregatorAttrs: ['Pnl'] # Only these attributes are allowed for aggregation
+            }
+
+            setTimeout ->
+                attrDropdown = table.find('.pvtAttrDropdown')
+                options = attrDropdown.find('option').map(-> @.value).toArray()
+                expect(options).toEqual ['', 'Pnl']
+                done()
+            , 500
+
 describe "$.pivot()", ->
 
     describe "with no rows/cols, default count aggregator, default TableRenderer",  ->

@@ -1132,6 +1132,7 @@
         cols: [],
         rows: [],
         vals: [],
+        aggregatorAttrs: null,
         dataClass: PivotData,
         exclusions: {},
         inclusions: {},
@@ -1402,7 +1403,7 @@
         initialRender = true;
         refreshDelayed = (function(_this) {
           return function() {
-            var exclusions, inclusions, len4, newDropdown, numInputsToProcess, pivotUIOptions, pvtVals, q, ref4, ref5, s, subopts, unusedAttrsContainer, vals;
+            var exclusions, inclusions, len4, newDropdown, numInputsToProcess, pivotUIOptions, pvtVals, q, ref4, ref5, ref6, s, subopts, unusedAttrsContainer, vals;
             subopts = {
               derivedAttributes: opts.derivedAttributes,
               localeStrings: opts.localeStrings,
@@ -1436,8 +1437,17 @@
                 newDropdown = $("<select>").addClass('pvtAttrDropdown').append($("<option>")).bind("change", function() {
                   return refresh();
                 });
-                for (s = 0, len4 = shownAttributes.length; s < len4; s++) {
-                  attr = shownAttributes[s];
+
+                /*
+                Populate the attribute dropdown used for determining the cell
+                aggregation.
+                
+                You can specify 'aggregatorAttrs', which will list only a
+                specific set of attributes allowed.
+                 */
+                ref6 = opts.aggregatorAttrs || shownAttributes;
+                for (s = 0, len4 = ref6.length; s < len4; s++) {
+                  attr = ref6[s];
                   newDropdown.append($("<option>").val(attr).text(attr));
                 }
                 pvtVals.append(newDropdown);
@@ -1479,13 +1489,13 @@
               }
             });
             subopts.filter = function(record) {
-              var excludedItems, k, ref6, ref7;
+              var excludedItems, k, ref7, ref8;
               if (!opts.filter(record)) {
                 return false;
               }
               for (k in exclusions) {
                 excludedItems = exclusions[k];
-                if (ref6 = "" + ((ref7 = record[k]) != null ? ref7 : 'null'), indexOf.call(excludedItems, ref6) >= 0) {
+                if (ref7 = "" + ((ref8 = record[k]) != null ? ref8 : 'null'), indexOf.call(excludedItems, ref7) >= 0) {
                   return false;
                 }
               }

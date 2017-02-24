@@ -620,6 +620,7 @@ callWithJQuery ($) ->
             hiddenAttributes: []
             menuLimit: 500
             cols: [], rows: [], vals: []
+            aggregatorAttrs: null
             dataClass: PivotData
             exclusions: {}
             inclusions: {}
@@ -886,8 +887,17 @@ callWithJQuery ($) ->
                             .addClass('pvtAttrDropdown')
                             .append($("<option>"))
                             .bind "change", -> refresh()
-                        for attr in shownAttributes
+
+                        ###
+                        Populate the attribute dropdown used for determining the cell
+                        aggregation.
+
+                        You can specify 'aggregatorAttrs', which will list only a
+                        specific set of attributes allowed.
+                        ###
+                        for attr in (opts.aggregatorAttrs or shownAttributes)
                             newDropdown.append($("<option>").val(attr).text(attr))
+
                         pvtVals.append(newDropdown)
 
                 if initialRender
