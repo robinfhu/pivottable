@@ -1088,15 +1088,15 @@
         pivotData = new opts.dataClass(input, opts);
         try {
           result = opts.renderer(pivotData, opts.rendererOptions);
-        } catch (_error) {
-          e = _error;
+        } catch (error) {
+          e = error;
           if (typeof console !== "undefined" && console !== null) {
             console.error(e.stack);
           }
           result = $("<span>").html(opts.localeStrings.renderError);
         }
-      } catch (_error) {
-        e = _error;
+      } catch (error) {
+        e = error;
         if (typeof console !== "undefined" && console !== null) {
           console.error(e.stack);
         }
@@ -1532,8 +1532,8 @@
           items: 'li',
           placeholder: 'pvtPlaceholder'
         });
-      } catch (_error) {
-        e = _error;
+      } catch (error) {
+        e = error;
         if (typeof console !== "undefined" && console !== null) {
           console.error(e.stack);
         }
