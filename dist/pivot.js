@@ -1520,8 +1520,8 @@
               }).appendTo(unusedAttrsContainer);
             }
             pivotTable.css("opacity", 1);
-            if (opts.onRefresh != null) {
-              return opts.onRefresh(pivotUIOptions);
+            if (typeof opts.onRefresh === 'function') {
+              return opts.onRefresh.call(_this, pivotUIOptions);
             }
           };
         })(this);

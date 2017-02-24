@@ -958,7 +958,7 @@ callWithJQuery ($) ->
                         .appendTo unusedAttrsContainer
 
                 pivotTable.css("opacity", 1)
-                opts.onRefresh(pivotUIOptions) if opts.onRefresh?
+                opts.onRefresh.call @, pivotUIOptions if typeof(opts.onRefresh) is 'function'
 
             refresh = =>
                 pivotTable.css("opacity", 0.5)
